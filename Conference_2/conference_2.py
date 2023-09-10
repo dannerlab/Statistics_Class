@@ -83,10 +83,10 @@ shap_test_1=0.05
 shap_test_2=0.9
 while t_score>=0.05 and shap_test_1<=0.05 and shap_test_2>=0.05:
     
-    rat_sniffs_before=np.floor(np.random.normal(loc=25.0, scale=2.0, size=25))
-    rat_sniffs_skew = np.ceil(skewnorm.rvs(a = skewness,loc=3, scale=2,  size=25))
+    rat_sniffs_shift=np.floor(np.random.normal(loc=25.0, scale=2.0, size=25))
+    rat_sniffs_before = np.ceil(skewnorm.rvs(a = skewness,loc=3, scale=2,  size=25))
     #rat_sniffs_after=np.random.normal(loc=10.0, scale=2.0, size=25)
-    rat_sniffs_after=rat_sniffs_before+rat_sniffs_skew
+    rat_sniffs_after=rat_sniffs_before+rat_sniffs_shift
     
     t_score=stats.ttest_rel(a=rat_sniffs_before, b=rat_sniffs_after)[1]
     shap_test_1=shapiro(rat_sniffs_before)[1]
