@@ -61,9 +61,9 @@ shap_test_2=0.9
 
 while shap_test_1>=0.05 and shap_test_2>=0.05 and rank_p_value>=0.05:
     
-    healthy_horse=stats.uniform.rvs(size=20)
+    healthy_horse=stats.uniform.rvs(size=40, loc=0.8, scale=0.1)
     shap_test_1=shapiro(healthy_horse)[1]
-    injured_horse=stats.uniform.rvs(size=20)   
+    injured_horse=stats.uniform.rvs(size=40, loc=0.5, scale=0.1)   
     shap_test_2=shapiro(injured_horse)[1] 
     rank_p_value=stats.ranksums(healthy_horse, injured_horse)[1]
 
