@@ -59,7 +59,7 @@ rank_p_value=0.9
 shap_test_1=0.9
 shap_test_2=0.9
 
-while shap_test_1>=0.05 and shap_test_2>=0.05 and rank_p_value>=0.05:
+while shap_test_1>=0.01 and shap_test_2>=0.01 and rank_p_value>=0.05:
     
     healthy_horse=stats.uniform.rvs(size=40, loc=0.8, scale=0.1)
     shap_test_1=shapiro(healthy_horse)[1]
