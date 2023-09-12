@@ -81,16 +81,18 @@ data_frame_3 = pd.DataFrame({col1:sample_number,col2:healthy_horse,col3:sample_n
 t_score=0.9
 shap_test_1=0.05
 shap_test_2=0.9
-while t_score>=0.05 and shap_test_1<=0.05 and shap_test_2>=0.05:
+shap_test_3=0.05
+while t_score>=0.05 and shap_test_1<=0.2 and shap_test_2>=0.05 and shap_test_3<=0.2:
     
     rat_sniffs_shift=np.floor(np.random.normal(loc=25.0, scale=2.0, size=25))
     rat_sniffs_before = np.ceil(skewnorm.rvs(a = skewness,loc=3, scale=2,  size=25))
     #rat_sniffs_after=np.random.normal(loc=10.0, scale=2.0, size=25)
     rat_sniffs_after=rat_sniffs_before+rat_sniffs_shift
-    
+    rat_sniffs_difference=rat_sniffs_after-rat_sniffs_before
     t_score=stats.ttest_rel(a=rat_sniffs_before, b=rat_sniffs_after)[1]
     shap_test_1=shapiro(rat_sniffs_before)[1]
     shap_test_2=shapiro(rat_sniffs_after)[1]
+    shap_test_3=shapiro(rat_sniffs_difference)[1]
 
 
 col1 = "Rat ID Before:"
@@ -101,7 +103,7 @@ sample_number=list(range(1,len(rat_sniffs_before)+1))
 
 data_frame_4 = pd.DataFrame({col1:sample_number,col2:rat_sniffs_before,col3:sample_number,col4:rat_sniffs_after})
 
-with pd.ExcelWriter('conference_2_dataset.xlsx') as writer:
+with pd.ExcelWriter('conference_2_take_2_dataset.xlsx') as writer:
        
     # use to_excel function and specify the sheet_name and index
     # to store the dataframe in specified sheet
