@@ -82,7 +82,8 @@ t_score=0.9
 shap_test_1=0.05
 shap_test_2=0.9
 shap_test_3=0.05
-while t_score>=0.05 and shap_test_1<=0.2 and shap_test_2>=0.05 and shap_test_3<=0.2:
+k_test_3=0.05
+while t_score>=0.05 and shap_test_1<=0.2 and shap_test_2>=0.05 and shap_test_3<=0.2 and k_test_3>=0.05:
     
     rat_sniffs_shift=np.floor(np.random.normal(loc=25.0, scale=2.0, size=25))
     rat_sniffs_before = np.ceil(skewnorm.rvs(a = skewness,loc=3, scale=2,  size=25))
@@ -93,6 +94,7 @@ while t_score>=0.05 and shap_test_1<=0.2 and shap_test_2>=0.05 and shap_test_3<=
     shap_test_1=shapiro(rat_sniffs_before)[1]
     shap_test_2=shapiro(rat_sniffs_after)[1]
     shap_test_3=shapiro(rat_sniffs_difference)[1]
+    k_test_3=stats.kstest(rat_sniffs_difference, 'norm')[1]
 
 
 col1 = "Rat ID Before:"
