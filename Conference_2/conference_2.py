@@ -83,6 +83,7 @@ shap_test_1=0.05
 shap_test_2=0.9
 shap_test_3=0.05
 k_test_3=0.05
+
 while t_score>=0.05 and shap_test_1<=0.2 and shap_test_2>=0.05 and shap_test_3<=0.2 and k_test_3<=0.2:
     
     rat_sniffs_shift=np.floor(np.random.normal(loc=25.0, scale=2.0, size=25))
