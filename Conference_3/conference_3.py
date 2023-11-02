@@ -86,8 +86,8 @@ while residuals_shap<=0.05 or residuals_k<=0.05 or two_anova_p1>=0.05 or two_ano
     male_drug_residual=(male_drug-np.mean(male_drug))
     female_placebo_residual=(female_placebo-np.mean(female_placebo))
     female_drug_residual=(female_drug-np.mean(female_drug))
-    combined_residuals=np.append(male_placebo_residual,male_drug_residual)
-    combined_residuals=np.append(combined_residuals,female_placebo_residual)
+
+    ombined_residuals=np.append(male_placebo_residual,male_drug_residual)    combined_residuals=np.append(combined_residuals,female_placebo_residual)
     combined_residuals=np.append(combined_residuals,female_drug_residual)
     standardized_residuals=combined_residuals/np.std(combined_residuals)
     residuals_shap=shapiro(standardized_residuals)[1]
