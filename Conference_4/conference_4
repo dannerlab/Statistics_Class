@@ -1,0 +1,16 @@
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from scipy.stats import chisquare
+
+
+value,pvalue =chisquare([16, 18, 16, 14, 12, 12], f_exp=[16, 18, 16, 14, 12, 12])
+print(pvalue)
+
+
+#col1 = "Dose:"
+#col2 = 'Time (s)'
+#doses=['Control']*len(control_water_maze)+['1 nM']*len(one_nM_water_maze)+['10 nM']*len(ten_nM_water_maze)+['20 nM']*len(twenty_nM_water_maze)
+#
+#question_1 = pd.DataFrame({col1:doses,col2:combined_times})
