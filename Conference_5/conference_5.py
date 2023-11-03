@@ -41,15 +41,7 @@ col2 = 'Scores'
 question_1 = pd.DataFrame({col1:MHPG,col2:score})
 
 
-
-
-import numpy as np
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Generating synthetic data
-np.random.seed(0)
+### Question 2
 
 # Simulating data for the study
 brain_size = np.random.normal(50, 10, 100)
