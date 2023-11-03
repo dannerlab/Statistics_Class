@@ -36,7 +36,6 @@ while MHPG_shap <= 0.05 or MHPG_k <= 0.05 or score_shap <= 0.05 or score_k <= 0.
 
 col1 = "MHPG Levels"
 col2 = 'Scores'
-#doses=['Control']*len(control_water_maze)+['1 nM']*len(one_nM_water_maze)+['10 nM']*len(ten_nM_water_maze)+['20 nM']*len(twenty_nM_water_maze)
 
 question_1 = pd.DataFrame({col1:MHPG,col2:score})
 
@@ -56,8 +55,17 @@ df = pd.DataFrame({'Brain_Size': brain_size, 'Drug_Effect': drug_effect, 'Neuro_
 model = ols('Neuro_Score ~ Brain_Size + Drug_Effect', data=df).fit()
 print(model.summary())
 
+
+col1 = "Brain Size"
+col2 = 'Drug Effect'
+col3 = 'Neuro Score'
+
+question_2 = pd.DataFrame({col1:brain_size,col2:drug_effect,col3:neuro_score})
+
+
 with pd.ExcelWriter('Conference_5/conference_5_dataset.xlsx') as writer:
        
     # use to_excel function and specify the sheet_name and index
     # to store the dataframe in specified sheet
     question_1.to_excel(writer, sheet_name="Question 1", index=False)
+    question_2.to_excel(writer, sheet_name="Question 2", index=False)
